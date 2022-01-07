@@ -1,38 +1,23 @@
-const { Client, Intents, MessageActionRow } = require('discord.js'); // Import discord.js 
+const { default: Discord, Client } = require('discord.js'); // Import Discord.js
+require("colors"); // Import colors
 const config = require('./Data/config.json');
 
-const client = new Client({
-    intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES,
-    ], 
-    allowedMentions: {
-        repliedUser:false ,
+const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"], allowedMentions: { repliedUser: true  } });
+
+client.on('ready', () => {
+    console.log(client.user.username.cyan +` Started`.green);  // When the bot is ready, print "CareSasi is ready!"
+
+    client.user.setActivity("Coding with Tenten", { type: "WATCHING" }); // Set the bot's activity to "Watching"
+});
+
+client.on('messageCreate',(msg) => { 
+    if (msg.author.bot || msg.auhtor.id ===client.user.id) return ; // If the message is from a bot or the bot itself, return
+    if (!msg.guild) return ; 
+
+    if (msg.content === "ping"){
+        msg.reply("pong!"); // If the message is "ping", reply "pong!"
     }
-});
+})
 
-client.once('ready', () => {
-    console.log("CareSasi is Ready!");  // When the bot is ready, print "CareSasi is ready!"
-});
-
-client.on('messageCreate', msg => {
-
-    if (!msg.content.startsWith(config.prefix)) return; // If the message doesn't start with the prefix, return.
-
-    const args = msg.content.substring(config.prefix.length).split(/ +/);
-
-    switch (args[0]) {
-        case "hello":
-            msg.reply("Hello!"); 
-
-            break;
-
-        case "say":
-            msg.reply(args.slice(1).join(" ")); // Reply with the message after the command.
-
-            break;
-    }
-
-});
 
 client.login(config.token); // Login to discord 
