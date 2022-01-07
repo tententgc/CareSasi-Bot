@@ -1,20 +1,18 @@
 const { Client, Intents, MessageActionRow } = require('discord.js'); // Import discord.js 
-const config = require('./config.json');
-
+const config = require('./Data/config.json');
 
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-    ]
+    ], 
+    allowedMentions: {
+        repliedUser:false ,
+    }
 });
 
-const random_num = () => {
-    return Math.floor(Math.random() * 5);
-}
-
 client.once('ready', () => {
-    console.log("CareSasi is ready!");  // When the bot is ready, print "CareSasi is ready!"
+    console.log("CareSasi is Ready!");  // When the bot is ready, print "CareSasi is ready!"
 });
 
 client.on('messageCreate', msg => {
