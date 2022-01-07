@@ -5,6 +5,7 @@ const { readdirSync } = require("fs");
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"], allowedMentions: { repliedUser: true  } });
 
 console.clear(); 
+console.log("-".repeat(36).yellow);
 console.log("[!] Starting CareSasi!" .blue);
 readdirSync("./handlers/").map((d) => { 
     if (typeof (i = require("./handlers/" + d)) === "function") {

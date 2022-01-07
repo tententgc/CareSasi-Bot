@@ -19,7 +19,7 @@ module.exports = (client) => {
             if(typeof event_file === "function"){
                 const event_name = e.split(".js")[0]; 
                 client.on(event_name, event_file.bind(null, client)); 
-                console.log(`[>] Loaded Event: [`.green + event_name.cyan +`] Event`.green);
+                console.log(`[✔] Loaded Event: [`.green + event_name.cyan +`] Event`.green);
             }
         });
         console.log("-".repeat(36).yellow);
