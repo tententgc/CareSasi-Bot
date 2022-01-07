@@ -4,7 +4,7 @@ const { Client } = require("discord.js");
  * 
  * @param {Client} client 
  */
-module.exports = (client) => { 
+module.exports = async (client) => { 
 try{
     
     console.log(`[✔] `.green + client.user.username.cyan + ` is ready!`.green);

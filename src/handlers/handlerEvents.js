@@ -6,7 +6,7 @@ const { readdirSync } = require("fs"); // Import fs
  *  @param {Client} client 
  */
 
-module.exports = (client) => {
+module.exports = async (client) => {
     try{
         console.log("-".repeat(36).yellow);
         console.log("[!] Initializing Event Handler!".blue);

@@ -1,38 +1,36 @@
-const {Client, WebhookClient, MessageEmbed} = require('discord.js'); // Import Discord.js 
-const config = require('../Data/config.json'); // Import config.json 
-/**
- * 
- *  @param {Client} client 
- */
+const { Client, Webhook, WebhookClient, MessageEmbed } = require("discord.js");
+const { prefix, logger, color } = require("../Data/config.json");
 
-module.exports = (client) => { 
-    client.prefix =  config.prefix; // Set the bot's prefix
-    
+/**
+ *
+ * @param {Client} client
+ */
+module.exports = async (client) => {
+    client.prefix = prefix;
+    client.color = color;
+
     /**
      *
-     *  @param {Error} err
+     * @param {Error} err
      */
-    client.error = (err) => { 
+    client.error = async (err) => {
         try {
-            const isURL = (u) =>{
-                try { 
-                    new URL(u); 
-                    return true; 
-                }catch{
-                    return false; 
+            const isURL = (u) => {
+                try {
+                    new URL(u);
+                    return true;
+                } catch {
+                    return false;
                 }
             };
-            if (isURL(logger)){
-                try{
-                const loggerhook = new WebhookClient({ url : logger }); 
-                const error_embed = new MessageEmbed().setTitle("Error!").setDescription(`\`\`\`${err}\`\`\``).setColor(config.color);
-                loggerhook.send({ embeds : [error_embed] }); 
-            } catch{}
+            if (isURL(logger)) {
+                try {
+                    const loggerhook = new WebhookClient({ url: logger });
+                    const error_embed = new MessageEmbed().setColor(color).setTitle("Error!").setDescription(`\`\`\`js${err.stack}\n\`\`\``);
+                    await loggerhook.send({ embeds: [error_embed] });
+                } catch { }
             }
-            console.log("[ERROR]".red + ` ${err}`.red); 
-            //logger
-        }catch (err) {
-            //err
-        } 
-    }
-} 
+            console.log("[ERROR] Occured!".red, err);
+        } catch (err) { }
+    };
+};
