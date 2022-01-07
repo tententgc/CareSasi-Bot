@@ -46,4 +46,5 @@ or
 
 ``` 
 `prefix` — your bot command prefix
+
 `TOKEN` — your bot token (should always be private)
