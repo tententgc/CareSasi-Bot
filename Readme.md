@@ -48,3 +48,5 @@ or
 `prefix` — your bot command prefix
 
 `TOKEN` — your bot token (should always be private)
+
+>Last Updated : 8/1/2022 By @tententgc
