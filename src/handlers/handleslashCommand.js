@@ -12,6 +12,7 @@ module.exports = async (client) => {
         console.log("[!] Initializing Slash Commands Handler!".blue);
         console.log("-".repeat(36).yellow);
 
+        const slashCommandsArr = []
         const slash_cmd_dirs  = readdirSync("./slashCommands");
 
         slash_cmd_dirs.map( slash_cmd_dir  => { 
@@ -19,8 +20,19 @@ module.exports = async (client) => {
             slash_cmd_files.map(file => { 
                 const cmd = require(`../slashCommands/${slash_cmd_dir}/${file}`); 
 
-                console.log(cmd)
-            })
+                if (!cmd.name) { 
+                console.log(`[⨯] Failed to load [`.red + file.cyan +`] Slash Command.. Missing Name!`.red); 
+                }else if (!cmd.description)  { 
+                console.log(`[⨯] Failed to load [`.red + cmd.name.cyan +`] Slash Command.. Missing Description !`.red); 
+                }else if (!cmd.run) { 
+                console.log(`[⨯] Failed to load [`.red + cmd.name.cyan +`] Slash Command.. Missing Function!`.red); 
+                }else{
+                    client.slashCommands.set(cmd.name, cmd);
+                    slashCommandsArr.push(cmd); 
+                    console.log(`[✔] loaded [`.green + cmd.name.cyan +`] Slash Command`.green);
+                }
+
+            });
         });
     } catch (err) {
         client.error(err);

@@ -1,4 +1,4 @@
-const { Client, Webhook, WebhookClient, MessageEmbed } = require("discord.js");
+const { Client, Webhook, WebhookClient, MessageEmbed, Collection } = require("discord.js");
 const { prefix, logger, color } = require("../Data/config.json");
 
 /**
@@ -8,6 +8,7 @@ const { prefix, logger, color } = require("../Data/config.json");
 module.exports = async (client) => {
     client.prefix = prefix;
     client.color = color;
+    client.slashCommands = new Collection(); 
 
     /**
      *
