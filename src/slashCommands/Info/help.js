@@ -1,4 +1,4 @@
-const { Interaction, Client,InteractionEmbed } = require("discord.js");
+const { Interaction, Client, MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "help",
@@ -7,18 +7,17 @@ module.exports = {
     /**
      *
      * @param {Client} client
-     * @param {Interaction}interaction
+     * @param {Interaction} interaction
      * @param {String[]} args
      */
-    run: async (client,interaction, args) => {
+    run: async (client, interaction, args) => {
         try {
-            if(!interaction.isCommand()) return; 
+            if (!interaction.isCommand()) return;
+            const { guild } = interaction;
 
-            const { guild } =interaction;
+            const embed = new MessageEmbed().setColor(client.color);
 
-            const embed = newInteractionEmbed().setColor(client.color);
-
-            embed.setDescription("Hello World")
+            embed.setDescription("Hello World");
 
             await interaction.reply({ embeds: [embed] });
         } catch (err) {
