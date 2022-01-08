@@ -6,6 +6,8 @@
     "colors": "^1.4.0",
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.5.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.1.5",
+    "reconlx": "^2.5.2"
   }
 }
