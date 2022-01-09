@@ -38,7 +38,7 @@ or
 ```javascript
 ...
 {
-    "prefix": "#",
+    "prefix": ">",
     "token": "YOUR_TOKEN", 
     "logger": "", 
     "color": "2f3136"
