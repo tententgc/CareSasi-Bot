@@ -3,7 +3,8 @@ require("colors"); // Import colors
 const config = require('./data/config.json'); // Import config.json
 const { readdirSync } = require("fs");
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"], allowedMentions: { repliedUser: true  } });
-
+const dotenv = require('dotenv'); // Import dotenv
+dotenv.config(); // Load .env 
 
 
 console.clear(); 
@@ -16,4 +17,4 @@ readdirSync("./handlers/").map((d) => {
 })
 
 
-client.login(config.token); // Login to discord 
+client.login (process.env.TOKEN); // Login to Discord 
