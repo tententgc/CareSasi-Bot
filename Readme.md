@@ -49,4 +49,8 @@ or
 
 `TOKEN` — your bot token (should always be private)
 
->Last Updated : 8/1/2022 By @tententgc
+## Profile CareSaSi-DiscordBot
+
+<img src="https://github.com/tententgc/CareSasi-Bot/blob/65434edf14c90cdfa79d385ae16306db8b12da05/Profile%20Bot/CareSasi%20Profile.png">
+
+>Last Updated : 10/1/2022 By @tententgc
