@@ -64,7 +64,7 @@ module.exports = {
                 return message.channel.send({ embed: [noCommandEmbed] });
             }
             const helpMenuEmbed = new MessageEmbed()
-            .setTitle(`Command Inforamton`)
+            .setTitle(`Command Information`)
             .addFields(`Prefix`,`\`${prefix}\``)
             .addFields(`Command`, command.name ? `\`${command.name}\`` : 'No command name')
             .addFields(`Aliases`, command.aliases ? `\`${command.aliases.join('` `')}\`` : 'No aliases')
