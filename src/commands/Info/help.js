@@ -63,6 +63,9 @@ module.exports = {
 
                 return message.channel.send({ embed: [noCommandEmbed] });
             }
+
+
+            
             const helpMenuEmbed = new MessageEmbed()
             .setTitle(`Command Information`)
             .addFields(`Prefix`,`\`${prefix}\``)
